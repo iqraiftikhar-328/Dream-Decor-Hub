@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Dream Decor Hub | Curated Home & Living</title>
+    <meta name="description" content="Discover kitchen gadgets, luxury lights, room decor, greenery & more. Affiliate-friendly shopping at Dream Decor Hub.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #FAF7F2;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            color: #2C1E23;
+            line-height: 1.45;
+            scroll-behavior: smooth;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
+
+        h1, h2, h3, .logo, .nav-links a, .section-title, .category-title {
+            font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 36px;
+        }
+
+        /* Color Palette */
+        :root {
+            --ivory: #FAF7F2;
+            --plum: #3B1F2B;
+            --dusty-rose: #C9837A;
+            --sage: #8BA888;
+            --gold: #D4A843;
+        }
+
+        .accent-gold { color: var(--gold); }
+        .accent-rose { color: var(--dusty-rose); }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--plum);
+            border: none;
+            padding: 14px 32px;
+            font-weight: 600;
+            border-radius: 48px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            display: inline-block;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+        .btn-primary:hover {
+            background: #C29B37;
+            transform: translateY(-3px);
+            box-shadow: 0 18px 28px -12px rgba(212,168,67,0.4);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid var(--dusty-rose);
+            color: var(--dusty-rose);
+            padding: 12px 28px;
+            border-radius: 48px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.25s;
+            display: inline-block;
+        }
+        .btn-outline:hover {
+            background: rgba(201,131,122,0.08);
+            border-color: #B46E65;
+            transform: translateY(-2px);
+        }
+
+        /* Navigation */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 28px 0 20px;
+            flex-wrap: wrap;
+            gap: 20px;
+            border-bottom: 1px solid #E8DDD1;
+            position: sticky;
+            top: 0;
+            background-color: rgba(250, 247, 242, 0.95);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+        }
+        .logo {
+            font-size: 2.1rem;
+            font-weight: 600;
+            background: linear-gradient(130deg, var(--plum) 20%, var(--dusty-rose) 60%, var(--gold) 90%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .nav-links {
+            display: flex;
+            gap: 38px;
+            font-weight: 500;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #4A2C34;
+            font-size: 1.05rem;
+            transition: 0.2s;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 4px;
+        }
+        .nav-links a:hover {
+            color: var(--dusty-rose);
+            border-bottom-color: var(--gold);
+        }
+
+        /* Hero */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 56px;
+            padding: 64px 0 56px;
+        }
+        .hero-content { flex: 1.2; }
+        .hero-badge {
+            display: inline-flex;
+            background: rgba(139,168,136,0.15);
+            padding: 6px 18px;
+            border-radius: 60px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--sage);
+            margin-bottom: 24px;
+        }
+        .hero-content h1 {
+            font-size: 4rem;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            color: var(--plum);
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #5E4049;
+            margin-bottom: 36px;
+            max-width: 520px;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 28px;
+        }
+        .stat span {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .hero-image {
+            flex: 1;
+            border-radius: 48px;
+            min-height: 420px;
+            background: url('https://placehold.co/700x500/EADDCB/D4A843?text=Dream+Home+Sanctuary') center/cover;
+            box-shadow: 0 35px 45px -20px rgba(59,31,43,0.2);
+            transition: transform 0.4s;
+            border: 1px solid rgba(212,168,67,0.3);
+        }
+        .hero-image:hover {
+            transform: scale(1.01);
+        }
+
+        /* Section Styles */
+        .section-marker {
+            scroll-margin-top: 100px;
+        }
+        
+        .category-section {
+            padding: 70px 0 60px;
+            border-bottom: 1px solid #EFE4DA;
+        }
+        
+        .category-section:last-of-type {
+            border-bottom: none;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.8rem;
+            color: var(--plum);
+            margin-bottom: 12px;
+        }
+        
+        .section-header p {
+            color: #836A70;
+            max-width: 650px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+        }
+        
+        /* Featured Grid for each section (visual inspiration cards, not product cards) */
+        .feature-showcase {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .inspire-card {
+            flex: 1;
+            min-width: 260px;
+            background: white;
+            border-radius: 32px;
+            overflow: hidden;
+            transition: all 0.35s ease;
+            box-shadow: 0 12px 28px -8px rgba(59,31,43,0.06);
+            border: 1px solid #F0E3D9;
+        }
+        
+        .inspire-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 40px -14px rgba(59,31,43,0.15);
+            border-color: var(--gold);
+        }
+        
+        .inspire-img {
+            height: 240px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .inspire-info {
+            padding: 24px 22px 28px;
+            text-align: center;
+        }
+        
+        .inspire-info h3 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            color: var(--plum);
+        }
+        
+        .inspire-info p {
+            color: #6F525C;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .inspire-link {
+            display: inline-block;
+            background: #FAF4EF;
+            padding: 10px 28px;
+            border-radius: 44px;
+            font-weight: 600;
+            color: var(--gold);
+            text-decoration: none;
+            transition: 0.25s;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .inspire-link:hover {
+            background: var(--gold);
+            color: var(--ivory);
+        }
+        
+        /* Special banner style for a featured category */
+        .featured-banner {
+            background: linear-gradient(115deg, #FFFFFF, #FDF6F0);
+            border-radius: 56px;
+            padding: 52px 48px;
+            margin: 50px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 32px;
+            border: 1px solid rgba(139,168,136,0.3);
+            box-shadow: 0 20px 35px -15px rgba(0,0,0,0.05);
+        }
+        
+        .testimonials {
+            background: #FCF8F3;
+            border-radius: 56px;
+            padding: 64px 44px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .testimonial-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 36px;
+            justify-content: center;
+            margin-top: 48px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 32px;
+            padding: 32px;
+            flex: 1;
+            min-width: 240px;
+            border-bottom: 3px solid var(--gold);
+        }
+        
+        .stars {
+            color: var(--gold);
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            margin-bottom: 16px;
+        }
+        
+        .customer-name {
+            font-weight: 600;
+            margin-top: 12px;
+            color: var(--plum);
+        }
+        
+        .newsletter-section {
+            background: #FAF3EC;
+            border-radius: 56px;
+            padding: 56px 40px;
+            text-align: center;
+            margin: 30px 0 40px;
+        }
+        
+        .newsletter-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 28px;
+        }
+        
+        .newsletter-group input {
+            padding: 16px 26px;
+            border-radius: 80px;
+            border: 1px solid #DDCFC2;
+            background: white;
+            min-width: 280px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .footer {
+            border-top: 1px solid #E2D3C7;
+            padding: 52px 0 44px;
+            margin-top: 50px;
+            text-align: center;
+        }
+        
+        .footer-disclaimer {
+            background: #F2E8DF;
+            padding: 12px 24px;
+            border-radius: 100px;
+            display: inline-block;
+            margin-bottom: 34px;
+            font-size: 0.75rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            text-decoration: none;
+            color: #9E7C68;
+            transition: color 0.2s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+        
+        @media (max-width: 780px) {
+            .container { padding: 0 24px; }
+            .hero-content h1 { font-size: 2.7rem; }
+            .navbar { flex-direction: column; position: relative; }
+            .hero { flex-direction: column; }
+            .section-header h2 { font-size: 2.2rem; }
+            .featured-banner { flex-direction: column; text-align: center; }
+        }
+        
+        .category-badge {
+            display: inline-block;
+            background: rgba(212,168,67,0.15);
+            padding: 6px 18px;
+            border-radius: 60px;
+            font-size: 0.75rem;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="navbar">
+        <div class="logo">✦ Dream Decor Hub</div>
+        <div class="nav-links">
+            <a href="#living">Living</a>
+            <a href="#greenery">Greenery</a>
+            <a href="#lighting">Luxury Lighting</a>
+            <a href="#kitchen">Kitchen</a>
+            <a href="#other">Other</a>
+        </div>
+    </div>
+
+    <div class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">✦ INSPIRING COLLECTIONS • AFFILIATE PICKS</div>
+            <h1>Transform every <span class="accent-gold">corner</span> with <span class="accent-rose">soulful decor</span></h1>
+            <p>Discover curated collections for living, greenery, luxury lighting, kitchen essentials & beyond. Exclusive affiliate deals await.</p>
+            <a href="#living" class="btn-primary">Explore Collections →</a>
+            <div class="hero-stats"><div class="stat"><span>5</span><br>Curated Sections</div><div class="stat"><span>200+</span><br>Affiliate Picks</div><div class="stat"><span>★ 4.9</span><br>Reviews</div></div>
+        </div>
+        <div class="hero-image" style="background-image: linear-gradient(115deg, rgba(59,31,43,0.05), rgba(139,168,136,0.05)), url('https://placehold.co/700x500/EADDCB/D4A843?text=Dream+Home+Sanctuary');"></div>
+    </div>
+
+    <!-- 5 SECTIONS: Living, Greenery, Luxury Lighting, Kitchen, Other -->
+    
+    <!-- SECTION 1: LIVING -->
+    <div id="living" class="category-section section-marker">
+        <div class="section-header">
+            <span class="category-badge">✦ curated for comfort</span>
+            <h2>🛋️ Living & Room Decor</h2>
+            <p>Elevate your living space with timeless furniture, wall art, mirrors, and cozy accents. Handpicked for style and warmth.</p>
+        </div>
+        <div class="feature-showcase">
+            <div class="inspire-card">
+                <div class="inspire-img" style="background-image: url('https://placehold.co/500x380/E8D5C6/C9837A?text=Organic+Mirror');"></div>
+                <div class="inspire-info">
+                    <h3>Asymmetrical Wall Mirror</h3>
+                    <p>Add depth and elegance to any room with this organic-shaped mirror.</p>
+                    <a href="#" class="inspire-link">Shop living →</a>
+                </div>
+            </div>
+            <div class="inspire-card">
+                <div class="inspire-img" style="background-image: url('https://placehold.co/500x380/DAC3B0/C9837A?text=Abstract+Canvas+Art');"></div>
+                <div class="inspire-info">
+                    <h3>Abstract Botanical Prints</h3>
+                    <p>A set of three serene prints that bring gallery vibes to your walls.</p>
+                    <a href="#" class="inspire-link">Discover art →</a>
+                </div>
+            </div>
+            <div class="inspire-card">
+                <div class="inspire-img" style="background-image: url('https://placehold.co/500x380/D5C0AE/D4A843?text=Ceramic+Vase+Set');"></div>
+                <div class="inspire-info">
+                    <h3>Ribbed Ceramic Vase Trio</h3>
+                    <p>Perfect for dried botanicals or as standalone sculptural pieces.</p>
+                    <a href="#" class="inspire-link">View decor →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 2: GREENERY -->
+    <div id="greenery" class="category-section section-marker">
+        <div class="section-header">
+            <span class="category-badge">🌱 biophilic living</span>
+            <h2>🌿 Greenery & Indoor Plants</h2>
+            <p>Breathe life into your home with lush foliage, planters, and biophilic decor. Transform any space into a serene jungle.</p>
+        </div>
+        <div class="feature-showcase">
+            <div class="inspire-card">
+                <div class="inspire-img" style="background-image: url('https://placehold.co/500x380/DAE3D4/8BA888?text=Fiddle+Leaf+Fig');"></div>
+                <div class="inspire-info">
+                    <h3>Fiddle Leaf Fig Tree</h3>
+                    <p>The ultimate statement plant — lush, tall, and air-purifying.</p>
+                    <a href="#" class="inspire-link">Get greenery →</a>
+                </div>
+            </div>
+            <div class="inspire-card">
+                <div class="inspire-img" style="background-image: url('https://placehold.co/500x380/CCDCC2/8BA888?text=Hanging+Air+Plant');"></div>
+                <div class="inspire-info">
+                    <h3>Macrame Hanging Planter</h3>
+                    <p>Set of 2 handwoven hangers with air plants included.</p>
+                    <a href="#" class="inspire-link">Shop planters →</a>
+                </div>
+            </div>
+            <div class="inspire-card">
+                <div class="inspire-img" style="background-image: url('https://placehold.co/500x380/CEDFC5/8BA888?text+Terrarium+Kit');"></div>
+                <div class="inspire-info">
+                    <h3>Self-Cleaning Terrarium</h3>
+                    <p>Low-maintenance glass terrarium with moss and ferns.</p>
+                    <a href="#" class="inspire-link">Discover →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 3: LUXURY LIGHTING -->
+    <div id="lighting" class="category-section section-marker">
+        <div class="section-header">
+            <span class="category-badge">✨ illuminate with elegance</span>
+            <h2>💡 Luxury Lighting</h2>
+            <p>From crystal chandeliers to modern floor lamps — create the perfect ambiance with designer lighting at affiliate prices.</p>
+        </div>
+        <div class="feature-showcase">
+            <div class="inspire-card">
+                <div class="inspire-img" style="background-image: url('https://placehold.co/500x380/F2E0D1/D4A843?text=Crystal+Chandelier');"></div>
+                <div class="inspire-info">
+                    <h3>Mini Crystal Chandelier</h3>
+                    <p>Elegant drop chandelier for dining or bedroom, gold finish.</p>
+                    <a href="#" class="inspire-link">Shop lights →</a>
+                </div>
+            </div>
+            <div class="inspire-card">
+                <div class="inspire-img" style="background-image: url('https://placehold.co/500x380/D9C2B3/D4A843?text=Marble+Table+Lamp');"></div>
+                <div class="inspire-info">
+                    <h3>Marble & Brass Table Lamp</h3>
+                    <p>Luxury meets minimalism — dimmable LED, warm glow.</p>
+                    <a href="#" class="inspire-link">Illuminate →</a>
+                </div>
+            </div>
+            <div class="inspire-card">
+                <div class="inspire-img" style="background-image: url('https://placehold.co/500x380/CFB8A7/C9837A?text=Arched+Floor+Lamp');"></div>
+                <div class="inspire-info">
+                    <h3>Gold Arch Floor Lamp</h3>
+                    <p>Mid-century modern statement piece with marble base.</p>
+                    <a href="#" class="inspire-link">See lamp →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 4: KITCHEN -->
+    <div id="kitchen" class="category-section section-marker">
+        <div class="section-header">
+            <span class="category-badge">🍳 cook & entertain</span>
+            <h2>🍽️ Kitchen Gadgets & Essentials</h2>
+            <p>Innovative tools, smart appliances, and stylish serveware that make cooking a joy. Elevate your culinary space.</p>
+        </div>
+        <div class="feature-showcase">
+            <div class="inspire-card">
+                <div class="inspire-img" style="background-image: url('https://placehold.co/500x380/DBC2B0/8BA888?text=Smart+Olive+Oil+Sprayer');"></div>
+                <div class="inspire-info">
+                    <h3>Mist & Infuse Oil Sprayer</h3>
+                    <p>Even oil distribution for healthy cooking — BPA-free.</p>
+                    <a href="#" class="inspire-link">Shop gadget →</a>
+                </div>
+            </div>
+            <div class="inspire-card">
+                <div class="inspire-img" style="background-image: url('https://placehold.co/500x380/DCCBBB/8BA888?text=Electric+Kettle+Gooseneck');"></div>
+                <div class="inspire-info">
+                    <h3>Gooseneck Smart Kettle</h3>
+                    <p>Precise temperature control, ideal for pour-over coffee and tea.</p>
+                    <a href="#" class="inspire-link">Get kettle →</a>
+                </div>
+            </div>
+            <div class="inspire-card">
+                <div class="inspire-img" style="background-image: url('https://placehold.co/500x380/EAD3C4/C9837A?text=Herb+Keeper+Pot');"></div>
+                <div class="inspire-info">
+                    <h3>Self-Watering Herb Keeper</h3>
+                    <p>Keep herbs fresh for weeks — perfect for kitchen windowsills.</p>
+                    <a href="#" class="inspire-link">Discover →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 5: OTHER (BEDROOM + TEXTILES + AMBIENCE) -->
+    <div id="other" class="category-section section-marker">
+        <div class="section-header">
+            <span class="category-badge">🕯️ beyond the basics</span>
+            <h2>🧸 Bedroom, Textiles & Ambience</h2>
+            <p>Plush throws, aromatherapy diffusers, velvet headboards, and more — create a sanctuary for rest and relaxation.</p>
+        </div>
+        <div class="feature-showcase">
+            <div class="inspire-card">
+                <div class="inspire-img" style="background-image: url('https://placehold.co/500x380/EEDDCB/C9837A?text=Velvet+Bed+Frame');"></div>
+                <div class="inspire-info">
+                    <h3>Tufted Velvet Headboard</h3>
+                    <p>Luxurious velvet, button-tufted design for a dreamy bedroom.</p>
+                    <a href="#" class="inspire-link">View bedroom →</a>
+                </div>
+            </div>
+            <div class="inspire-card">
+                <div class="inspire-img" style="background-image: url('https://placehold.co/500x380/E7D6C8/D4A843?text=Luxury+Throw+Blanket');"></div>
+                <div class="inspire-info">
+                    <h3>Cashmere Blend Throw</h3>
+                    <p>Ultra-soft, warm, and elegant — available in dusty rose and sage.</p>
+                    <a href="#" class="inspire-link">Get cozy →</a>
+                </div>
+            </div>
+            <div class="inspire-card">
+                <div class="inspire-img" style="background-image: url('https://placehold.co/500x380/D9CFC2/D4A843?text=Aromatherapy+Diffuser');"></div>
+                <div class="inspire-info">
+                    <h3>Ultrasonic Aroma Diffuser</h3>
+                    <p>Wood grain finish, LED mood light, and essential oil set included.</p>
+                    <a href="#" class="inspire-link">Shop ambience →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Curated Banner -->
+    <div class="featured-banner">
+        <div class="curated-text"><h3>🍃 The "Green & Gourmet" Edit</h3><p>Kitchen gadgets + indoor plants bundle — exclusive affiliate discount 20% off. Make every meal & corner lush.</p><a href="#" class="btn-primary" style="margin-top: 18px;">Explore bundle →</a></div>
+        <div style="font-size: 3rem; background: rgba(212,168,67,0.1); padding: 1rem 2rem; border-radius: 80px;">🌱✨🍳</div>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="testimonials">
+        <div class="section-header"><h2>❤️ beloved by design lovers</h2><p>Real feedback from our affiliate community</p></div>
+        <div class="testimonial-grid">
+            <div class="testimonial-card"><div class="stars">★★★★★</div><p>“The kitchen gadgets section is a game-changer. My gooseneck kettle is pure joy. And the lighting? Dreamy!”</p><div class="customer-name">— Priya S.</div></div>
+            <div class="testimonial-card"><div class="stars">★★★★★</div><p>“Dream Decor Hub introduced me to the most beautiful olive sprayer + hanging plants. My home feels alive!”</p><div class="customer-name">— Jordan L.</div></div>
+            <div class="testimonial-card"><div class="stars">★★★★★</div><p>“Luxury lights at affiliate prices? Yes please! The marble lamp is breathtaking. I trust their curation.”</p><div class="customer-name">— Hannah W.</div></div>
+        </div>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="newsletter-section">
+        <h3 style="font-size: 2rem; color: var(--plum);">🌿 join the inner circle</h3>
+        <p>Get early access to flash sales, kitchen gadget drops & greenery guides.</p>
+        <p style="font-size: 0.7rem; margin-top: 20px;">No spam, only dreamy updates. Unsubscribe anytime.</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-disclaimer">🔗 Affiliate Disclosure: We partner with trusted home brands. Purchases via our links may earn us a commission at no extra cost.</div>
+        
+        <p>© 2026 Dream Decor Hub — every room, every detail, every dream. ✨</p>
+    </div>
+</div>
+</body>
+</html>
